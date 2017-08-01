@@ -21,6 +21,27 @@ const choices = (state = [], action) => {
       }];
     }
 
+    case 'ADD_CHOICES': {
+      /*
+          A disabled choice appears in the choice dropdown but cannot be selected
+          A selected choice has been added to the passed input's value (added as an item)
+          An active choice appears within the choice dropdown
+       */
+      return [...state, {
+        id: action.id,
+        elementId: action.elementId,
+        groupId: action.groupId,
+        value: action.value,
+        label: (action.label || action.value),
+        disabled: (action.disabled || false),
+        selected: false,
+        active: true,
+        score: 9999,
+        customProperties: action.customProperties,
+        keyCode: null
+      }];
+    }
+
     case 'ADD_ITEM': {
       let newState = state;
 

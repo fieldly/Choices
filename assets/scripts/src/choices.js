@@ -251,7 +251,12 @@ class Choices {
     // Generate input markup
     this._createInput();
     // Subscribe store to render method
-    this.store.subscribe(this.render);
+
+    this.timeout = null;
+    this.store.subscribe(function () {
+      if (this.timeout) { clearTimeout(this.timeout); }
+      this.timeout = setTimeout(() => { this.render.apply(this, arguments); }, 50);
+    });
     // Render any items
     this.render();
     // Trigger event listeners
