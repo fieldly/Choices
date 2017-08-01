@@ -253,10 +253,10 @@ class Choices {
     // Subscribe store to render method
 
     this.timeout = null;
-    this.store.subscribe(function () {
+    this.store.subscribe((function () {
       if (this.timeout) { clearTimeout(this.timeout); }
       this.timeout = setTimeout(() => { this.render.apply(this, arguments); }, 50);
-    });
+    }).bind(this));
     // Render any items
     this.render();
     // Trigger event listeners

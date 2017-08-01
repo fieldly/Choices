@@ -328,7 +328,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.timeout = setTimeout(function () {
 	          _this.render.apply(_this, _arguments);
 	        }, 50);
-	      });
+	      }.bind(this));
 	      // Render any items
 	      this.render();
 	      // Trigger event listeners
